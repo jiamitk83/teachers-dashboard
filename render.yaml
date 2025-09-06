@@ -1,18 +1,25 @@
 services:
-  - name: server
+  - name: teachers-dashboard-server
     type: web
     buildCommand: cd server && npm install
     startCommand: cd server && node index.js
     envVars:
       - key: MONGO_URL
-        value: mongodb://localhost:27017  # Replace with your MongoDB connection string
+        sync: false  # Will set this manually with MongoDB Atlas
       - key: JWT_SECRET
-        value: your-super-secret-jwt-key-change-this-in-production  # Change this to a secure secret
-  - name: client
+        generateValue: true  # Auto-generate secure secret
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+  - name: teachers-dashboard-client
     type: web
     buildCommand: cd client && npm install && npm run build
     staticSite:
       publishDir: client/build
     envVars:
       - key: REACT_APP_API_BASE_URL
-        value: ${server_RENDER_EXTERNAL_URL}
+        fromService:
+          type: web
+          name: teachers-dashboard-server
+          property: host

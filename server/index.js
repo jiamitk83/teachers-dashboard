@@ -17,7 +17,7 @@ app.use(cors());
 app.use(express.json());
 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 // Middleware to verify JWT token
 const authenticateToken = (req, res, next) => {
@@ -484,9 +484,9 @@ app.get('/api/exams/:id/submissions', async (req, res) => {
 
 
 // Catch all handler: send back React's index.html file for client-side routing
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
-// });
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+});
 
 // Create default admin user
 const createDefaultAdmin = async () => {

@@ -1,0 +1,39 @@
+{
+  "name": "teachers-dashboard",
+  "version": "1.0.0",
+  "description": "Complete Teachers Dashboard with Examination Module - MERN Stack",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node server/index.js",
+    "build": "cd client && npm install && npm run build",
+    "install-server": "cd server && npm install",
+    "install-client": "cd client && npm install",
+    "postinstall": "npm run install-server && npm run install-client"
+  },
+  "keywords": [
+    "education",
+    "dashboard",
+    "examination",
+    "mern-stack",
+    "react",
+    "nodejs",
+    "mongodb"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "cors": "^2.8.5",
+    "mongodb": "^6.19.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
